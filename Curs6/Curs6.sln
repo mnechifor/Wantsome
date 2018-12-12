@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2048
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Curs6_Author", "Curs6\Curs6_Author.csproj", "{0E9F4F2C-2936-4660-960B-ADA8376C38B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Profesor", "Profesor\Profesor.csproj", "{7506F25B-84B3-44EA-AE87-ED5640844ACE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkedList", "LinkedList\LinkedList.csproj", "{31464AAA-AA68-4EF5-83A1-8E9E63405D11}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0E9F4F2C-2936-4660-960B-ADA8376C38B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E9F4F2C-2936-4660-960B-ADA8376C38B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E9F4F2C-2936-4660-960B-ADA8376C38B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E9F4F2C-2936-4660-960B-ADA8376C38B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7506F25B-84B3-44EA-AE87-ED5640844ACE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7506F25B-84B3-44EA-AE87-ED5640844ACE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7506F25B-84B3-44EA-AE87-ED5640844ACE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7506F25B-84B3-44EA-AE87-ED5640844ACE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31464AAA-AA68-4EF5-83A1-8E9E63405D11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31464AAA-AA68-4EF5-83A1-8E9E63405D11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31464AAA-AA68-4EF5-83A1-8E9E63405D11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31464AAA-AA68-4EF5-83A1-8E9E63405D11}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C1473967-37F6-47CB-AF53-4A463131513D}
+	EndGlobalSection
+EndGlobal
