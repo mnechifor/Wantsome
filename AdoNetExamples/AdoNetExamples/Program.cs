@@ -28,6 +28,10 @@ namespace AdoNetExamples
             SqlCommand insertCommand = new SqlCommand();
             insertCommand.Connection = connection;
 
+            SqlParameter bookParameter = new SqlParameter();
+            bookParameter.Value = "C# Programming 3";
+            bookParameter.ParameterName = "bookName";
+
             string insertText = @"INSERT INTO [dbo].[Book]
                                 ([Title]
                                     ,[YearOfPublishing]
@@ -35,15 +39,17 @@ namespace AdoNetExamples
                                     ,[HardCover]
                                     ,[AuthorID])
                                   VALUES
-                                    ('C# Programming'
+                                    (@bookName
                                         , 2018
                                         , 300
                                         , 1
-                                        , 1)";
+                                        , 1);
+            SELECT CAST(scope_identity() AS int)";
 
             insertCommand.CommandText = insertText;
+            insertCommand.Parameters.Add(bookParameter);
 
-            insertCommand.ExecuteNonQuery();
+            int Id = (int)insertCommand.ExecuteScalar();
 
             Console.ReadLine();
         }
