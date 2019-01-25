@@ -17,6 +17,9 @@ namespace AdoNetExamples
 
             //Console.WriteLine(connection.ServerVersion);
 
+            Console.WriteLine("Please enter book name:");
+            string bookName = Console.ReadLine();
+
             string selectStatement = "select count(*) from book";
             SqlCommand command = new SqlCommand(selectStatement)
             {
@@ -25,11 +28,18 @@ namespace AdoNetExamples
 
             int o = (int)command.ExecuteScalar();
 
+            InsertNewBook(connection, bookName);
+
+            Console.ReadLine();
+        }
+
+        private static void InsertNewBook(SqlConnection connection, string bookName)
+        {
             SqlCommand insertCommand = new SqlCommand();
             insertCommand.Connection = connection;
 
             SqlParameter bookParameter = new SqlParameter();
-            bookParameter.Value = "C# Programming 3";
+            bookParameter.Value = bookName;
             bookParameter.ParameterName = "bookName";
 
             string insertText = @"INSERT INTO [dbo].[Book]
@@ -49,9 +59,7 @@ namespace AdoNetExamples
             insertCommand.CommandText = insertText;
             insertCommand.Parameters.Add(bookParameter);
 
-            int Id = (int)insertCommand.ExecuteScalar();
-
-            Console.ReadLine();
+            int Id = (int) insertCommand.ExecuteScalar();
         }
     }
 }
