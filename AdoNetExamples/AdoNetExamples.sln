@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.28010.2048
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdoNetExamples", "AdoNetExamples\AdoNetExamples.csproj", "{A4394A16-D506-4C77-9C44-8D0F2E314C69}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonSerializer", "JsonSerializer\JsonSerializer.csproj", "{40AA0AEB-0568-42F4-988E-5BF970C74B6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkExample", "EntityFrameworkExample\EntityFrameworkExample.csproj", "{7BC3B443-2358-4A97-8514-19338EF2369E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{A4394A16-D506-4C77-9C44-8D0F2E314C69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4394A16-D506-4C77-9C44-8D0F2E314C69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4394A16-D506-4C77-9C44-8D0F2E314C69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40AA0AEB-0568-42F4-988E-5BF970C74B6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40AA0AEB-0568-42F4-988E-5BF970C74B6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40AA0AEB-0568-42F4-988E-5BF970C74B6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40AA0AEB-0568-42F4-988E-5BF970C74B6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BC3B443-2358-4A97-8514-19338EF2369E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BC3B443-2358-4A97-8514-19338EF2369E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BC3B443-2358-4A97-8514-19338EF2369E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BC3B443-2358-4A97-8514-19338EF2369E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

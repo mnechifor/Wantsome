@@ -1,14 +1,56 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Xml.Serialization;
 
 namespace AdoNetExamples
 {
     internal class Program
     {
+        public static void Save(string FileName)
+        {
+            Author a1 = new Author();
+            a1.Age = 10;
+            a1.Name = "Ionescu";
+
+            List<Author> list = new List<Author>();
+            list.Add(a1);
+            list.Add(new Author
+            {
+                Age = 15
+            });
+
+            using (var writer = new System.IO.StreamWriter(FileName))
+            {
+                var serializer = new XmlSerializer(list.GetType());
+                serializer.Serialize(writer, list);
+                writer.Flush();
+            }
+        }
+
+        public static List<Author> Load(string FileName)
+        {
+            using (var stream = System.IO.File.OpenRead(FileName))
+            {
+                var serializer = new XmlSerializer(typeof(List<Author>));
+                return serializer.Deserialize(stream) as List<Author>;
+            }
+        }
+
         private static void Main(string[] args)
         {
-            string connectionString = "Data Source=.;Initial Catalog=Library;Integrated Security=True";
+            Save("Test.txt");
+
+            List<Author> a = Load("Test.txt");
+
+            //string connectionString = "Data Source=.;Initial Catalog=Library;Integrated Security=True";
+            // string connectionString = System.Configuration.ConfigurationManager.AppSettings["ConnectionString"];
+
+            int age = int.Parse(System.Configuration.ConfigurationManager.AppSettings["Age"]);
+            string connectionString =
+                System.Configuration.ConfigurationManager.ConnectionStrings["LibraryDatabaseConnection"].ConnectionString;
+
             SqlConnection connection = new SqlConnection
             {
                 ConnectionString = connectionString
@@ -48,16 +90,17 @@ namespace AdoNetExamples
 
             selectCommand.CommandType = CommandType.StoredProcedure;
 
-            SqlDataReader reader = selectCommand.ExecuteReader();
-            
-            while (reader.Read())
+            using (SqlDataReader reader = selectCommand.ExecuteReader())
             {
-                string book = $"{reader["Id"]}, {reader[1]}";
-                Console.WriteLine(book);
+                while (reader.Read())
+                {
+                    string book = $"{reader["Id"]}, {reader[1]}";
+                    Console.WriteLine(book);
+                }
+
+                reader.Close();
             }
 
-            reader.Close();
-            
             connection.Close();
 
             Console.ReadLine();
