@@ -1,0 +1,35 @@
+﻿@model IList<Wantsome.Models.Employee>
+
+<div>
+    Hello from website! <br />
+
+    Number of employees: @Model.Count <br /><br />
+
+    <table style="width:100%">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Edit</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var emp in Model)
+        {
+            <tr>
+                <td>@emp.Id</td>
+                <td>@emp.Name</td>
+                <td>@emp.Email</td>
+                <td>
+                    @Html.ActionLink("Edit", "Add", "Home", new { @id = emp.Id }, null)
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    
+    <br/>
+
+    @Html.ActionLink("New employee", "Add", "Home")
+</div>
