@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,9 @@ namespace Wantsome.BusinessLogic
         }
         public void Save(Employee employee)
         {
-            throw new NotImplementedException();
+            db.Employees.Add(employee);
+
+            db.SaveChanges();
         }
 
         public Employee Get(int id)
@@ -29,7 +32,8 @@ namespace Wantsome.BusinessLogic
 
         public IList<Employee> GetAll()
         {
-           return db.Employees.Select(e => e).ToList();
+           return db.Employees.Select(e => e)
+               .ToList();
         }
     }
 }

@@ -40,11 +40,11 @@ namespace Wantsome.WebApp01.Controllers
 
         // GET /home/add
         [HttpGet]
-        public ActionResult Add(int id)
+        public ActionResult Add(int? id)
         {
             if (id == null) return View();
 
-            var emp = manager.Get(id);
+            var emp = manager.Get(id.Value);
 
             //Views/Home/Add.cshtml
             return View(emp);
@@ -56,6 +56,13 @@ namespace Wantsome.WebApp01.Controllers
         {
             if (ModelState.IsValid)
             {
+                employee.GradeId = 1;
+                employee.Grade = new Grade()
+                {
+                    GradeId = 1,
+                    GradeName = "asdasd"
+                };
+
                 manager.Save(employee);
 
                 return Redirect("Index");

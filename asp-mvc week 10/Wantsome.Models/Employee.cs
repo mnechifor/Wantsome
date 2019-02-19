@@ -18,5 +18,9 @@ namespace Wantsome.Models
 
         [DisplayName("Details")]
         public string Details { get; set; }
+
+        public int GradeId { get; set; }
+
+        public virtual Grade Grade { get; set; }
     }
 }
