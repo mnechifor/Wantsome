@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Globalization;
 using System.Web.Mvc;
 using Wantsome.BusinessLogic;
+using Wantsome.Exceptions;
 using Wantsome.Interfaces;
 using Wantsome.Models;
 
@@ -43,8 +45,6 @@ namespace Wantsome.WebApp01.Controllers
         [HttpGet]
         public ActionResult Add(int? id)
         {
-            throw new Exception("");
-
             if (id == null) return View();
 
             var emp = _employeesManager.Get(id.Value);
@@ -61,7 +61,22 @@ namespace Wantsome.WebApp01.Controllers
             {
                 employee.Grade = _gradesManager.GetGradeById(employee.GradeId);
 
-                _employeesManager.Save(employee);
+                try
+                {
+                    _employeesManager.Save(employee);
+                }
+                catch (EmployeeContainsALetterException e)
+                {
+                    Console.WriteLine(e);
+
+                    //ModelState.Add("message", new ModelState
+                    //{
+                    //    Value = new ValueProviderResult("row", "", CultureInfo.CurrentCulture),
+                    //    Errors = { e }
+                    //});
+
+                    return View(employee);
+                }
 
                 return Redirect("Index");
             }
@@ -70,14 +85,13 @@ namespace Wantsome.WebApp01.Controllers
             return View(employee);
         }
 
-        // on exception handler
         //protected override void OnException(ExceptionContext filterContext)
         //{
         //    filterContext.ExceptionHandled = true;
 
         //    filterContext.Result = new ViewResult
         //    {
-        //        ViewName = "~/Views/Shared/Error.cshtml"
+        //        ViewName = "~/Views/Error/Index.cshtml"
         //    };
         //}
     }

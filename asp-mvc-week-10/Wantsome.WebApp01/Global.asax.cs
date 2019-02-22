@@ -18,15 +18,11 @@ namespace Wantsome.WebApp01
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
-        //protected void Application_Error()
-        //{
-        //    var ex = Server.GetLastError();
+        protected void Application_Error()
+        {
+            var error = Server.GetLastError();
 
-        //    // do a log here
-
-        //    // redirect to index
-
-        //    Response.Redirect("/Error");
-        //}
+            Response.Redirect("/Error");
+        }
     }
 }
