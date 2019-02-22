@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using Wantsome.BusinessLogic;
 using Wantsome.Interfaces;
 using Wantsome.Models;
@@ -8,6 +9,7 @@ namespace Wantsome.WebApp01.Controllers
     public class HomeController : Controller
     {
         private readonly IEmployeeManager _employeesManager;
+
         private readonly ISqlGradesManager _gradesManager;
 
         public HomeController()
@@ -41,6 +43,8 @@ namespace Wantsome.WebApp01.Controllers
         [HttpGet]
         public ActionResult Add(int? id)
         {
+            throw new Exception("");
+
             if (id == null) return View();
 
             var emp = _employeesManager.Get(id.Value);
@@ -65,5 +69,16 @@ namespace Wantsome.WebApp01.Controllers
             //Views/Home/Add.cshtml
             return View(employee);
         }
+
+        // on exception handler
+        //protected override void OnException(ExceptionContext filterContext)
+        //{
+        //    filterContext.ExceptionHandled = true;
+
+        //    filterContext.Result = new ViewResult
+        //    {
+        //        ViewName = "~/Views/Shared/Error.cshtml"
+        //    };
+        //}
     }
 }
