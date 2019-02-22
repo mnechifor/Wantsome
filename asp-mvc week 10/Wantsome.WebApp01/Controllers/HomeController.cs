@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using Wantsome.BusinessLogic;
 using Wantsome.Interfaces;
 using Wantsome.Models;
@@ -7,11 +8,13 @@ namespace Wantsome.WebApp01.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IEmployeeManager manager;
+        private readonly IEmployeeManager employeesManager;
+        private readonly ISqlGradesManager gradesManager;
 
         public HomeController()
         {
-            manager = new SqlEmployeeManager();
+            employeesManager = new SqlEmployeeManager();
+            gradesManager = new SqlGradesManager();
 
             ViewBag.CurrentUserName = "Andrei";
             ViewData["CurrentUserName2"] = "Andrei 2";
@@ -23,7 +26,8 @@ namespace Wantsome.WebApp01.Controllers
         // GET /home/index
         public ActionResult Index()
         {
-            var employees = manager.GetAll();
+            var employees = employeesManager.GetAll();
+            Session["Grades"] = gradesManager.GetGrades();
 
             //Views/Home/Index.cshtml
             return View(employees); //employees - (@model in view)
@@ -32,7 +36,7 @@ namespace Wantsome.WebApp01.Controllers
         // GET /home/details/{id} - id un tip de param (uri param)
         public ActionResult Details(int id)
         {
-            var employee = manager.Get(id);
+            var employee = employeesManager.Get(id);
 
             //Views/Home/Details.cshtml
             return View(employee); //employee - (@model in view)
@@ -44,7 +48,7 @@ namespace Wantsome.WebApp01.Controllers
         {
             if (id == null) return View();
 
-            var emp = manager.Get(id.Value);
+            var emp = employeesManager.Get(id.Value);
 
             //Views/Home/Add.cshtml
             return View(emp);
@@ -56,14 +60,9 @@ namespace Wantsome.WebApp01.Controllers
         {
             if (ModelState.IsValid)
             {
-                employee.GradeId = 1;
-                employee.Grade = new Grade()
-                {
-                    GradeId = 1,
-                    GradeName = "asdasd"
-                };
+                employee.Grade = gradesManager.GetGradeById(employee.GradeId);
 
-                manager.Save(employee);
+                employeesManager.Save(employee);
 
                 return Redirect("Index");
             }

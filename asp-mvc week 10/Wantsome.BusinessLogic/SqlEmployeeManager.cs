@@ -21,6 +21,7 @@ namespace Wantsome.BusinessLogic
         public void Save(Employee employee)
         {
             db.Employees.Add(employee);
+            db.Entry(employee.Grade).State = EntityState.Unchanged;
 
             db.SaveChanges();
         }

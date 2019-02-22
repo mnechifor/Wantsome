@@ -23,7 +23,13 @@
             @Html.ValidationMessageFor(m => m.Details)
         </div>
 
-        <input type="submit" value="Add" class="btn btn-primary"/>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Grade.GradeName)
+            @Html.DropDownListFor(m => m.GradeId, (IEnumerable<SelectListItem>)Session["Grades"])
+        </div>
+
+        
+        <input type="submit" value="Add" class="btn btn-primary" />
     }
 
 </div>
