@@ -7,22 +7,6 @@
 </head>
 <body>
     <div class="container body-content">
-        <div>
-            UserName: @ViewBag.CurrentUserName
-        </div>
-
-        <div>
-            Other UserName: @ViewData["CurrentUserName2"]
-        </div>
-        
-        <div>
-            Temp data: @TempData["TempDataKey"]
-        </div>
-
-        <br />
-        <br />
-        <br />
-
         @RenderBody()
     </div>
 </body>

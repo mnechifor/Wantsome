@@ -25,7 +25,7 @@
 
         <div class="form-group">
             @Html.LabelFor(m => m.Grade.GradeName)
-            @Html.DropDownListFor(m => m.GradeId, (IEnumerable<SelectListItem>)Session["Grades"])
+            @Html.DropDownListFor(m => m.GradeId, (IEnumerable<SelectListItem>)Session["Grades"], new { @class = "form-control" })
         </div>
 
         
