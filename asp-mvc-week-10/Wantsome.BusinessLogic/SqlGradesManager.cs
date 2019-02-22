@@ -23,11 +23,13 @@ namespace Wantsome.BusinessLogic
             var gradesList = new List<SelectListItem>();
 
             foreach (var grade in grades)
+            {
                 gradesList.Add(new SelectListItem
                 {
                     Value = grade.GradeId.ToString(),
                     Text = grade.GradeName
                 });
+            }
 
             return gradesList;
         }

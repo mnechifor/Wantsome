@@ -1,5 +1,4 @@
-﻿using System;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using Wantsome.BusinessLogic;
 using Wantsome.Interfaces;
 using Wantsome.Models;
@@ -8,17 +7,13 @@ namespace Wantsome.WebApp01.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IEmployeeManager employeesManager;
-        private readonly ISqlGradesManager gradesManager;
+        private readonly IEmployeeManager _employeesManager;
+        private readonly ISqlGradesManager _gradesManager;
 
         public HomeController()
         {
-            employeesManager = new SqlEmployeeManager();
-            gradesManager = new SqlGradesManager();
-
-            ViewBag.CurrentUserName = "Andrei";
-            ViewData["CurrentUserName2"] = "Andrei 2";
-            TempData["TempDataKey"] = "123";
+            _employeesManager = new SqlEmployeeManager();
+            _gradesManager = new SqlGradesManager();
         }
 
         // GET /
@@ -26,8 +21,8 @@ namespace Wantsome.WebApp01.Controllers
         // GET /home/index
         public ActionResult Index()
         {
-            var employees = employeesManager.GetAll();
-            Session["Grades"] = gradesManager.GetGrades();
+            var employees = _employeesManager.GetAll();
+            Session["Grades"] = _gradesManager.GetGrades();
 
             //Views/Home/Index.cshtml
             return View(employees); //employees - (@model in view)
@@ -36,7 +31,7 @@ namespace Wantsome.WebApp01.Controllers
         // GET /home/details/{id} - id un tip de param (uri param)
         public ActionResult Details(int id)
         {
-            var employee = employeesManager.Get(id);
+            var employee = _employeesManager.Get(id);
 
             //Views/Home/Details.cshtml
             return View(employee); //employee - (@model in view)
@@ -48,7 +43,7 @@ namespace Wantsome.WebApp01.Controllers
         {
             if (id == null) return View();
 
-            var emp = employeesManager.Get(id.Value);
+            var emp = _employeesManager.Get(id.Value);
 
             //Views/Home/Add.cshtml
             return View(emp);
@@ -60,9 +55,9 @@ namespace Wantsome.WebApp01.Controllers
         {
             if (ModelState.IsValid)
             {
-                employee.Grade = gradesManager.GetGradeById(employee.GradeId);
+                employee.Grade = _gradesManager.GetGradeById(employee.GradeId);
 
-                employeesManager.Save(employee);
+                _employeesManager.Save(employee);
 
                 return Redirect("Index");
             }
