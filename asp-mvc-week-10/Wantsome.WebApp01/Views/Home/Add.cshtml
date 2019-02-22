@@ -5,6 +5,10 @@
 
     @using (Html.BeginForm())
     {
+        <div>
+            @Html.ValidationSummary()
+        </div>
+
         <div class="form-group">
             @Html.LabelFor(m => m.Name)
             @Html.TextBoxFor(m => m.Name, null, new { @class = "form-control" })
@@ -25,10 +29,10 @@
 
         <div class="form-group">
             @Html.LabelFor(m => m.Grade.GradeName)
-            @Html.DropDownListFor(m => m.GradeId, (IEnumerable<SelectListItem>)Session["Grades"])
+            @Html.DropDownListFor(m => m.GradeId, (IEnumerable<SelectListItem>)Session["Grades"], new { @class = "form-control" })
         </div>
 
-        
+
         <input type="submit" value="Add" class="btn btn-primary" />
     }
 

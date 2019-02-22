@@ -133,6 +133,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -176,6 +177,8 @@
     <Content Include="Views\About\Index.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Home\Add.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -197,6 +200,10 @@
     <ProjectReference Include="..\Wantsome.BusinessLogic\Wantsome.BusinessLogic.csproj">
       <Project>{a2a72521-494f-45bf-8103-d05370f74378}</Project>
       <Name>Wantsome.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wantsome.Exceptions\Wantsome.Exceptions.csproj">
+      <Project>{20D3B6F4-282F-4417-85CD-0608CB68C9CD}</Project>
+      <Name>Wantsome.Exceptions</Name>
     </ProjectReference>
     <ProjectReference Include="..\Wantsome.Interfaces\Wantsome.Interfaces.csproj">
       <Project>{d6fd6071-6a3f-42ff-8431-b3b0f35b4d1a}</Project>

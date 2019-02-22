@@ -79,6 +79,10 @@
       <Project>{03742f96-0dc1-46c2-8798-188f8fa52ac6}</Project>
       <Name>Wantsome.DataAccess</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Wantsome.Exceptions\Wantsome.Exceptions.csproj">
+      <Project>{20D3B6F4-282F-4417-85CD-0608CB68C9CD}</Project>
+      <Name>Wantsome.Exceptions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Wantsome.Interfaces\Wantsome.Interfaces.csproj">
       <Project>{d6fd6071-6a3f-42ff-8431-b3b0f35b4d1a}</Project>
       <Name>Wantsome.Interfaces</Name>

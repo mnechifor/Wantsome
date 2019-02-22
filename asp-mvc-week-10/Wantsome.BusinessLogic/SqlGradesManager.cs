@@ -9,32 +9,34 @@ namespace Wantsome.BusinessLogic
 {
     public class SqlGradesManager : ISqlGradesManager
     {
-        private readonly EmployeesDatabaseEntities db;
+        private readonly EmployeesDatabaseEntities _db;
 
         public SqlGradesManager()
         {
-            db = new EmployeesDatabaseEntities();
+            _db = new EmployeesDatabaseEntities();
         }
 
         public IEnumerable<SelectListItem> GetGrades()
         {
-            var grades = db.Grades.Select(g => g);
+            var grades = _db.Grades.Select(g => g);
 
             var gradesList = new List<SelectListItem>();
 
             foreach (var grade in grades)
+            {
                 gradesList.Add(new SelectListItem
                 {
                     Value = grade.GradeId.ToString(),
                     Text = grade.GradeName
                 });
+            }
 
             return gradesList;
         }
 
         public Grade GetGradeById(int gradeId)
         {
-            var grade = db.Grades.First(g => g.GradeId == gradeId);
+            var grade = _db.Grades.First(g => g.GradeId == gradeId);
 
             return grade;
         }

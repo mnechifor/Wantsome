@@ -17,5 +17,12 @@ namespace Wantsome.WebApp01
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
+        protected void Application_Error()
+        {
+            var error = Server.GetLastError();
+
+            Response.Redirect("/Error");
+        }
     }
 }
